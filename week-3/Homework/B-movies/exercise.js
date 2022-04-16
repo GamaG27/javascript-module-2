@@ -60,8 +60,42 @@ var movies = [
 
 // create showMovies function
 
+const allMovies = document.getElementById("all-movies");
+
+function showMovies(film) {
+  const moviesNumber = document.getElementById("movies-number");
+  moviesNumber.innerText = movies.length;
+  film.forEach((f) => {
+    const p = document.createElement("p");
+    p.innerHTML = f.title + f.director;
+    allMovies.appendChild(p);
+  });
+}
 
 // create a new movie object for your favorite movie
 
+const mymovie = {
+  title: "Die hard",
+  director: "John McTiernan",
+  type: "action",
+  haveWatched: true,
+};
 
 // create addMovies function
+
+const addMovie = (movie) => {
+  console.log(movies);
+  setTimeout(() => {
+    movies.push(movie);
+    console.log(movies);
+    showMovies(movies);
+  }, 2000);
+};
+
+setTimeout(() => {
+  showMovies(movies);
+}, 1000);
+
+setTimeout(() => {
+  addMovie(mymovie);
+}, 2000);
